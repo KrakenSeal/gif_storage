@@ -1,9 +1,11 @@
+import { MatGridListModule } from '@angular/material/grid-list';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { GifMeta } from 'src/app/models/gif-meta.model';
 import { GifManagerService } from 'src/app/services/gif-manager.service';
 import { FinderComponent } from '../finder/finder.component';
 import { CardEditorComponent } from '../card-editor/card-editor.component';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +14,27 @@ import { CardEditorComponent } from '../card-editor/card-editor.component';
 })
 export class DashboardComponent {
   constructor(public service: GifManagerService, public dialog: MatDialog) {}
+
+  public ordering = 'custom';
+  public searchText = '';
+
+  public get enableDragAndDrop(): boolean {
+    return !this.searchText && this.ordering == 'custom';
+  }
+
+  public orderingChanged(newValue: MatSelectChange) {
+    if (newValue.value == 'date_asc') {
+      this.service.gifs.sort((a, b) => (a.addDate?.getTime() ?? 0) - (b.addDate?.getTime() ?? 0));
+    }
+
+    if (newValue.value == 'date_desc') {
+      this.service.gifs.sort((b, a) => (a.addDate?.getTime() ?? 0) - (b.addDate?.getTime() ?? 0));
+    }
+  }
+
+  public orderChanged(newOrder: Array<GifMeta>) {
+    this.service.orderChanged(newOrder);
+  }
 
   public openFinder() {
     console.log('Open finder action');

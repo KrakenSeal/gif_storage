@@ -15,7 +15,11 @@ export class LocalStorageService {
   public loadState(): Array<GifMeta> {
     const result = localStorage.getItem(this.KEY);
     if (!result) return [];
-    return JSON.parse(result);
+    const res: Array<GifMeta> = JSON.parse(result);
+    res.forEach((e) => {
+      e.addDate = new Date(e.addDate ?? 0);
+    });
+    return res;
   }
 
   public cleanState() {

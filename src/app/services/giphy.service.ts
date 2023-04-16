@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GifMeta } from '../models/gif-meta.model';
 import { Observable, from, map, of } from 'rxjs';
-import { GifsResult, GiphyFetch } from '@giphy/js-fetch-api';
+import { GiphyFetch } from '@giphy/js-fetch-api';
 
 @Injectable({
   providedIn: 'root',
@@ -27,8 +27,8 @@ export class GiphyService {
         return response.data.map((gifInfo) => ({
           id: gifInfo.id.toString(),
           name: gifInfo.title,
-          url: gifInfo.bitly_gif_url,
-          preview_url: gifInfo.images.preview_gif.url,
+          url: gifInfo.images.original.url,
+          previewUrl: gifInfo.images.preview_gif.url,
         }));
       })
     );

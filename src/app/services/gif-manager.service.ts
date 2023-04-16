@@ -54,6 +54,11 @@ export class GifManagerService {
     this.downloadImage(gif.url, gif.name ?? 'bestgif.gif');
   }
 
+  public orderChanged(newOrder: Array<GifMeta>) {
+    this.gifs = newOrder;
+    this.saveState();
+  }
+
   private downloadImage(url: string, filename: string): void {
     // const blob = new Blob([data], { type: 'text/csv' });
     // const url= window.URL.createObjectURL(blob);

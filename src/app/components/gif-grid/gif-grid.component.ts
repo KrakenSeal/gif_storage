@@ -1,3 +1,4 @@
+import { CdkDragDrop, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GifMeta } from 'src/app/models/gif-meta.model';
 
@@ -8,6 +9,8 @@ import { GifMeta } from 'src/app/models/gif-meta.model';
 })
 export class GifGridComponent {
   @Input() gifs: Array<GifMeta> = [];
+  @Input() dragAndDropEnabled = false;
+  @Output() orderChanged: EventEmitter<Array<GifMeta>> = new EventEmitter<Array<GifMeta>>();
 
   @Output() gifAddEmmiter: EventEmitter<GifMeta> = new EventEmitter<GifMeta>();
 
@@ -15,5 +18,21 @@ export class GifGridComponent {
 
   public containerClick(clickedGif: GifMeta) {
     this.gifAddEmmiter.emit(clickedGif);
+  }
+
+  dragEntered(event: CdkDragEnter<number>) {
+    const drag = event.item;
+    const dropList = event.container;
+    const dragIndex = drag.data;
+    const dropIndex = dropList.data;
+
+    const phContainer = dropList.element.nativeElement;
+    const phElement = phContainer.querySelector('.cdk-drag-placeholder');
+    // TODO: Fix nullable elements and maybe fix drag and drop
+    phContainer.removeChild(phElement!);
+    phContainer.parentElement!.insertBefore(phElement!, phContainer);
+
+    moveItemInArray(this.gifs, dragIndex, dropIndex);
+    this.gifsChange.emit(this.gifs);
   }
 }

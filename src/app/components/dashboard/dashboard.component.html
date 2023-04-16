@@ -1,7 +1,7 @@
 <mat-toolbar>
   <span>Gif Storage</span>
   <mat-form-field>
-    <input matInput placeholder="Input gif name...">
+    <input matInput [(ngModel)]="searchText"  placeholder="Input gif name...">
   </mat-form-field>
 
   <button
@@ -18,11 +18,21 @@
      aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
     Add
   </button>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ordering</mat-label>
+    <mat-select (selectionChange)="orderingChanged($event)" [(value)]="ordering">
+      <mat-option value="custom">Custom</mat-option>
+      <mat-option value="date_asc">By date ▲</mat-option>
+      <mat-option value="date_desc">By date ▼</mat-option>
+    </mat-select>
+  </mat-form-field>
+
 </mat-toolbar>
-
-
 <app-gif-grid
-[gifs]="service.gifs"
+[gifs]="service.gifs | filterByText: searchText"
+[dragAndDropEnabled]="enableDragAndDrop"
 (gifAddEmmiter)="editGif($event)"
+(orderChanged)="orderChanged($event)"
 >
 </app-gif-grid>

@@ -16,11 +16,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSelectModule } from '@angular/material/select';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { GifCardComponent } from './components/gif-card/gif-card.component';
 import { GifGridComponent } from './components/gif-grid/gif-grid.component';
 import { CardEditorComponent } from './components/card-editor/card-editor.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FilterByTextPipe } from './pipes/filter-by-text.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     GifCardComponent,
     GifGridComponent,
     CardEditorComponent,
+    FilterByTextPipe,
   ],
   imports: [
     BrowserModule,
@@ -47,8 +51,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    MatSelectModule,
+    MatSnackBarModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

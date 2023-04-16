@@ -1,5 +1,29 @@
-  <mat-grid-list class="gif-wrapper" [cols]="5" [gutterSize]="'10'">
-    <mat-grid-tile *ngFor="let gif of gifs" (click)="containerClick(gif)">
+  <!-- <mat-grid-list cdkDropList class="gif-wrapper" [cols]="5" [gutterSize]="'10'" (cdkDropListDropped)="drop($event)">
+    <mat-grid-tile *ngFor="let gif of gifs" (click)="containerClick(gif)" cdkDrag>
       <app-gif-card [gif]="gif"></app-gif-card>
     </mat-grid-tile>
-  </mat-grid-list>
+  </mat-grid-list> -->
+
+
+
+
+
+  <div class="example-container" cdkDropListGroup>
+    <div
+      *ngFor="let gif of gifs; let i = index"
+      cdkDropList
+      [cdkDropListData]="i"
+    >
+      <div
+        cdkDrag
+        [cdkDragDisabled]="!dragAndDropEnabled"
+        [cdkDragData]="i"
+        (cdkDragEntered)="dragEntered($event)"
+        class="example-box"
+        (click)="containerClick(gif)"
+      >
+      <app-gif-card [gif]="gif"></app-gif-card>
+        <!-- {{ gif.name }} -->
+      </div>
+    </div>
+  </div>
