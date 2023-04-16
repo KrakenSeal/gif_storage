@@ -11,10 +11,8 @@
      aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
     Search
   </button>
-  <input type="file" class="file-input"
-       (change)="selectLocalFile($event)" #fileUpload>
   <button
-    (click)="fileUpload.click()"
+    (click)="openGifDialog()"
    mat-raised-button color="primary">
     <mat-icon
      aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>

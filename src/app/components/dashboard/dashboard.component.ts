@@ -19,4 +19,6 @@ export class DashboardComponent {
       width: '80%',
     });
   }
+
+  public openGifDialog() {}
 }
