@@ -45,8 +45,8 @@ export class GiphyService {
         return response.data.map((gifInfo) => ({
           id: gifInfo.id.toString(),
           name: gifInfo.title,
-          url: gifInfo.bitly_url,
-          preview_url: gifInfo.images.preview_gif.url,
+          url: gifInfo.images.original.url,
+          previewUrl: gifInfo.images.preview_gif.url,
         }));
       })
     );

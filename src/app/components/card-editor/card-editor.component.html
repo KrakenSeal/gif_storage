@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Add a new gif</h2>
+<mat-dialog-content class="mat-typography dialog-content">
+  <img *ngIf="url" height="300" width="300" mat-card-image [src]="url">
+  <div class="input-group">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>URL</mat-label>
+      <input matInput [(ngModel)]="url"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Preview URL</mat-label>
+      <input matInput [(ngModel)]="preview"/>
+    </mat-form-field>
+
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button [mat-dialog-close]='genGif'>Save</button>
+</mat-dialog-actions>
+

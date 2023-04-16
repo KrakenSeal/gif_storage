@@ -15,15 +15,28 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { GifCardComponent } from './components/gif-card/gif-card.component';
 import { GifGridComponent } from './components/gif-grid/gif-grid.component';
+import { CardEditorComponent } from './components/card-editor/card-editor.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, FinderComponent, GifCardComponent, GifGridComponent],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    FinderComponent,
+    GifCardComponent,
+    GifGridComponent,
+    CardEditorComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+
+    DragDropModule,
 
     FormsModule,
     MatToolbarModule,

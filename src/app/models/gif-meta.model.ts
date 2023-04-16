@@ -1,6 +1,8 @@
 export interface GifMeta {
-  id: string;
+  id?: string;
   url: string;
   name?: string;
-  preview_url?: string;
+  previewUrl?: string;
+  addDate?: Date;
+  order?: number;
 }
