@@ -1,0 +1,26 @@
+<mat-toolbar>
+  <span>Gif Storage</span>
+  <mat-form-field>
+    <input matInput placeholder="Input gif name...">
+  </mat-form-field>
+
+  <button
+    (click)="openFinder()"
+   mat-raised-button color="primary">
+    <mat-icon
+     aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+    Search
+  </button>
+</mat-toolbar>
+
+<mat-grid-list
+class="gif-wrapper"
+ [cols]="5" [gutterSize]="'10'">
+<mat-grid-tile
+  *ngFor="let gif of gifColleciton"
+>
+  <app-gif-card
+  [gif]="gif"
+  ></app-gif-card>
+</mat-grid-tile>
+</mat-grid-list>
