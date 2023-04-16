@@ -1,22 +1,21 @@
-<h2 mat-dialog-title>Search a gif in GIPHY</h2>
-<mat-dialog-content class="mat-typography">
-  <mat-form-field>
-    <input matInput placeholder="Input gif name...">
-  </mat-form-field>
-
-<mat-grid-list
-class="gif-wrapper"
- [cols]="5" [gutterSize]="'10'">
-<mat-grid-tile
-  *ngFor="let gif of foundedGifs"
->
-  <app-gif-card
-  [gif]="gif"
-  ></app-gif-card>
-</mat-grid-tile>
-</mat-grid-list>
+<h2 mat-dialog-title>Add a new gif</h2>
+<mat-dialog-content class="mat-typography dialog-content">
+  <div class="search-bar">
+    <mat-form-field appearance="fill">
+      <mat-label>Search gifs by kewords</mat-label>
+      <input matInput [(ngModel)]="query" (ngModelChange)="searchInputChanged()" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+  <div>Results by {{query?query:'Trending'}}</div>
+  <div class="gif-container">
+    <app-gif-grid
+    [gifs]="fetchedGifs"
+    (gifAddEmmiter)="addGif($event)"
+    >
+    </app-gif-grid>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  <button mat-button mat-dialog-close>Close</button>
 </mat-dialog-actions>

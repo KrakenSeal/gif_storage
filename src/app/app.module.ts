@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FinderComponent } from './components/finder/finder.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -15,13 +17,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { GifCardComponent } from './components/gif-card/gif-card.component';
+import { GifGridComponent } from './components/gif-grid/gif-grid.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, FinderComponent, GifCardComponent],
+  declarations: [AppComponent, DashboardComponent, FinderComponent, GifCardComponent, GifGridComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
 
+    FormsModule,
     MatToolbarModule,
     MatCardModule,
     MatGridListModule,

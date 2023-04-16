@@ -1,0 +1,27 @@
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.search-bar{
+  width: 100%;
+  position:sticky;
+  top:0px;
+  z-index: 1;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &> mat-form-field {
+    width: 100%;
+  }
+
+}
+
+.gif-container {
+  flex:1;
+  overflow-y: auto;
+  margin:10px;
+}

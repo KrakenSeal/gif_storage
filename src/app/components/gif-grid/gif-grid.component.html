@@ -1,0 +1,5 @@
+  <mat-grid-list class="gif-wrapper" [cols]="5" [gutterSize]="'10'">
+    <mat-grid-tile *ngFor="let gif of gifs" (click)="containerClick(gif)">
+      <app-gif-card [gif]="gif"></app-gif-card>
+    </mat-grid-tile>
+  </mat-grid-list>

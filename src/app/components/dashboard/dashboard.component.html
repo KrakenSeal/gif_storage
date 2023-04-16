@@ -11,16 +11,18 @@
      aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
     Search
   </button>
+  <input type="file" class="file-input"
+       (change)="selectLocalFile($event)" #fileUpload>
+  <button
+    (click)="fileUpload.click()"
+   mat-raised-button color="primary">
+    <mat-icon
+     aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+    Add
+  </button>
 </mat-toolbar>
 
-<mat-grid-list
-class="gif-wrapper"
- [cols]="5" [gutterSize]="'10'">
-<mat-grid-tile
-  *ngFor="let gif of gifColleciton"
+<app-gif-grid
+[gifs]="service.gifs"
 >
-  <app-gif-card
-  [gif]="gif"
-  ></app-gif-card>
-</mat-grid-tile>
-</mat-grid-list>
+</app-gif-grid>
