@@ -33,6 +33,6 @@ export class GifGridComponent {
     phContainer.parentElement!.insertBefore(phElement!, phContainer);
 
     moveItemInArray(this.gifs, dragIndex, dropIndex);
-    this.gifsChange.emit(this.gifs);
+    this.orderChanged.emit(this.gifs);
   }
 }
