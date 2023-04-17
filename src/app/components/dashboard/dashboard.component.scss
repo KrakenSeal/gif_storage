@@ -1,6 +1,15 @@
 .gif-wrapper {
   margin:10px;
 }
-.file-input {
- display: none;
+
+.toolbar{
+  padding-top:10px;
+  display: flex;
+  flex-direction:row ;
+  justify-content: space-between;
+
+  & > mat-form-field{
+    width: 30%;
+  }
 }
+

@@ -21,11 +21,19 @@ export class FinderComponent {
     this.queryChanged.pipe(debounceTime(300)).subscribe((value) => {
       if (value == '')
         gifService.getTrending().subscribe((res) => {
-          this.fetchedGifs = res;
+          this.fetchedGifs = res.filter((g) => {
+            return !service.gifs.some((gif) => {
+              return g.id == gif.id || g.name == gif.name;
+            });
+          });
         });
       else
         gifService.searchByTag(value).subscribe((res) => {
-          this.fetchedGifs = res;
+          this.fetchedGifs = res.filter((g) => {
+            return !service.gifs.some((gif) => {
+              return g.id == gif.id || g.name == gif.name;
+            });
+          });
         });
     });
     // TODO: Emmit to

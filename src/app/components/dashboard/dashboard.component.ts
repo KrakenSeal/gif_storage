@@ -6,6 +6,7 @@ import { GifManagerService } from 'src/app/services/gif-manager.service';
 import { FinderComponent } from '../finder/finder.component';
 import { CardEditorComponent } from '../card-editor/card-editor.component';
 import { MatSelectChange } from '@angular/material/select';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +27,6 @@ export class DashboardComponent {
     if (newValue.value == 'date_asc') {
       this.service.gifs.sort((a, b) => (a.addDate?.getTime() ?? 0) - (b.addDate?.getTime() ?? 0));
     }
-
     if (newValue.value == 'date_desc') {
       this.service.gifs.sort((b, a) => (a.addDate?.getTime() ?? 0) - (b.addDate?.getTime() ?? 0));
     }
@@ -58,7 +58,19 @@ export class DashboardComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) this.service.update(result);
       // TODO: move it in another place
-      else this.service.downloadGif(gif);
+      // else this.service.downloadGif(gif);
+    });
+  }
+
+  public cleanStorage() {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        caption: 'Confirmation',
+        content: 'Are you sure want clear all gifs?',
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) this.service.clean();
     });
   }
 }

@@ -75,6 +75,12 @@ export class GifManagerService {
     this.saveState();
   }
 
+  public clean() {
+    this.gifs = [];
+    this.storage.cleanState();
+    this.showNotification('Storage cleaned');
+  }
+
   private downloadImage(url: string, filename: string): void {
     // const blob = new Blob([data], { type: 'text/csv' });
     // const url= window.URL.createObjectURL(blob);

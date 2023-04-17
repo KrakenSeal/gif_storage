@@ -24,6 +24,8 @@ import { GifGridComponent } from './components/gif-grid/gif-grid.component';
 import { CardEditorComponent } from './components/card-editor/card-editor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterByTextPipe } from './pipes/filter-by-text.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { FilterByTextPipe } from './pipes/filter-by-text.pipe';
     GifGridComponent,
     CardEditorComponent,
     FilterByTextPipe,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { FilterByTextPipe } from './pipes/filter-by-text.pipe';
     MatDialogModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatTooltipModule,
   ],
   providers: [{ provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }],
   bootstrap: [AppComponent],

@@ -1,38 +1,52 @@
-<mat-toolbar>
-  <span>Gif Storage</span>
+<mat-toolbar class="toolbar">
+  <span>
+      <mat-icon>motion_photos_auto</mat-icon>
+    Gif Storage
+  </span>
   <mat-form-field>
-    <input matInput [(ngModel)]="searchText"  placeholder="Input gif name...">
+    <input matInput [(ngModel)]="searchText" placeholder="Input gif name..." />
+    <button *ngIf="!!searchText" mat-icon-button matSuffix (click)="searchText=''">
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
 
-  <button
-    (click)="openFinder()"
-   mat-raised-button color="primary">
-    <mat-icon
-     aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-    Search
-  </button>
-  <button
-    (click)="openGifDialog()"
-   mat-raised-button color="primary">
-    <mat-icon
-     aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-    Add
-  </button>
+  <div class="control-panel">
+    <mat-form-field appearance="fill">
+      <mat-label>Sorting</mat-label>
+      <mat-select (selectionChange)="orderingChanged($event)" [(value)]="ordering">
+        <mat-option value="custom">Custom</mat-option>
+        <mat-option value="date_asc">By date ▲</mat-option>
+        <mat-option value="date_desc">By date ▼</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button (click)="openFinder()" matTooltipPosition="below" matTooltip="Giphy" mat-icon-button color="primary">
+      <mat-icon aria-hidden="false" aria-label="Add from giphy" fontIcon="travel_explore"></mat-icon>
+    </button>
+    <button
+      (click)="openGifDialog()"
+      matTooltip="Add new gif"
+      matTooltipPosition="below"
+      mat-icon-button
+      color="primary"
+    >
+      <mat-icon aria-hidden="false" aria-label="Add new gif" fontIcon="add_photo_alternate"></mat-icon>
+    </button>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Ordering</mat-label>
-    <mat-select (selectionChange)="orderingChanged($event)" [(value)]="ordering">
-      <mat-option value="custom">Custom</mat-option>
-      <mat-option value="date_asc">By date ▲</mat-option>
-      <mat-option value="date_desc">By date ▼</mat-option>
-    </mat-select>
-  </mat-form-field>
-
+    <button
+      (click)="cleanStorage()"
+      matTooltip="Clean stroage"
+      matTooltipPosition="below"
+      mat-icon-button
+      color="accent"
+    >
+      <mat-icon aria-hidden="false" aria-label="Clean storage" fontIcon="delete"></mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
 <app-gif-grid
-[gifs]="service.gifs | filterByText: searchText"
-[dragAndDropEnabled]="enableDragAndDrop"
-(gifAddEmmiter)="editGif($event)"
-(orderChanged)="orderChanged($event)"
+  [gifs]="service.gifs | filterByText : searchText"
+  [dragAndDropEnabled]="enableDragAndDrop"
+  (gifAddEmmiter)="editGif($event)"
+  (orderChanged)="orderChanged($event)"
 >
 </app-gif-grid>
