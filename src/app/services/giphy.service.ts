@@ -7,7 +7,7 @@ import { GiphyFetch } from '@giphy/js-fetch-api';
   providedIn: 'root',
 })
 export class GiphyService {
-  // TODO: Change to input api
+  // TODO: change this key to your key
   private readonly API_KEY: string = 'PcflcV556qx9GFDoj5kqcv35B1CsDl62';
   private readonly DEFAULT_LIMIT: number = 25;
   private giphyService: GiphyFetch;

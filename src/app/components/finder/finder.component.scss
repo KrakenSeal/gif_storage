@@ -1,6 +1,8 @@
 .dialog-content {
   display: flex;
   flex-direction: column;
+  height: 500px;
+  overflow: hidden;
 }
 
 .search-bar{
@@ -12,11 +14,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   &> mat-form-field {
     width: 100%;
   }
+}
 
+.info{
+  color: #9b9b9b;
+  font-size: small;
 }
 
 .gif-container {

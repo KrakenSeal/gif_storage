@@ -37,10 +37,7 @@ export class DashboardComponent {
   }
 
   public openFinder() {
-    console.log('Open finder action');
     this.dialog.open(FinderComponent, {
-      // height: '80%',
-      // width: '80%',
       minWidth: '500px',
       minHeight: '500px',
       maxWidth: '1000px',
@@ -49,7 +46,6 @@ export class DashboardComponent {
   }
 
   public openGifDialog() {
-    console.log('Open editor action');
     const dialogRef = this.dialog.open(CardEditorComponent);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {

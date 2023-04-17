@@ -17,7 +17,6 @@ export class FinderComponent {
   private queryChanged = new Subject<string>();
 
   constructor(private gifService: GiphyService, private service: GifManagerService) {
-    // TODO: Looks like work fine. But maybe better to refactor
     this.queryChanged.pipe(debounceTime(300)).subscribe((value) => {
       if (value == '')
         gifService.getTrending().subscribe((res) => {
@@ -36,7 +35,6 @@ export class FinderComponent {
           });
         });
     });
-    // TODO: Emmit to
     this.queryChanged.next(this.query);
   }
 

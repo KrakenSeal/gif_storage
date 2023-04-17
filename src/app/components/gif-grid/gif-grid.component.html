@@ -1,4 +1,4 @@
-  <div class="example-container" cdkDropListGroup>
+  <div class="grid-container" cdkDropListGroup>
     <div
       *ngFor="let gif of gifs; let i = index"
       cdkDropList
@@ -10,7 +10,7 @@
         [style.cursor]="!dragAndDropEnabled?'pointer':''"
         [cdkDragData]="i"
         (cdkDragEntered)="dragEntered($event)"
-        class="example-box"
+        class="grid-box"
         (click)="containerClick(gif)"
       >
       <app-gif-card [gif]="gif"></app-gif-card>

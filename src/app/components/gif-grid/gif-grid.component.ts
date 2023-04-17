@@ -1,4 +1,4 @@
-import { CdkDragDrop, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GifMeta } from 'src/app/models/gif-meta.model';
 

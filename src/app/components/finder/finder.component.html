@@ -8,6 +8,7 @@
     </mat-form-field>
   </div>
   <div>Results by {{query?query:'Trending'}}</div>
+  <div class="info">To add gif just click on them</div>
   <div class="gif-container">
     <app-gif-grid
     [gifs]="fetchedGifs"
@@ -19,4 +20,3 @@
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Close</button>
 </mat-dialog-actions>
-

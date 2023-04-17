@@ -1,5 +1,5 @@
 import { LocalStorageService } from './local-storage.service';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { GifMeta } from '../models/gif-meta.model';
 import { nanoid } from 'nanoid';
 import { HttpClient } from '@angular/common/http';
@@ -28,7 +28,7 @@ export class GifManagerService {
   }
 
   public addGif(gif: GifMeta) {
-    if (this.gifs.some((g) => g.name == gif.name || g.url == gif.url)) {
+    if (this.gifs.some((g) => g.url == gif.url)) {
       this.showNotification('Gif was already added. Ignore');
       return false;
     }
@@ -82,9 +82,6 @@ export class GifManagerService {
   }
 
   private downloadImage(url: string, filename: string): void {
-    // const blob = new Blob([data], { type: 'text/csv' });
-    // const url= window.URL.createObjectURL(blob);
-    // window.open(url);
     this.http.get(url, { responseType: 'blob' }).subscribe((blob: Blob) => {
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
