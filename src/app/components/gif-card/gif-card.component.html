@@ -1,12 +1,19 @@
-<mat-card class='full'>
-  <!-- <mat-card-header>
+<!-- <mat-card class='full' (mouseover)="showHeader = true" (mouseleave)="showHeader = false">
+  <mat-card-header >
     <mat-card-title-group>
       <mat-card-title>
         {{gif?.name}}
       </mat-card-title>
     </mat-card-title-group>
-  </mat-card-header> -->
+  </mat-card-header>
   <mat-card-content >
     <img height="100%" width="100%" mat-card-image [src]="gif?.previewUrl">
   </mat-card-content>
-</mat-card>
+</mat-card> -->
+<div class="container">
+  <img height="auto" width="100%" mat-card-image [src]="gif?.previewUrl">
+  <div class="caption">{{gif?.name}}</div>
+</div>
+
+
+

@@ -23,7 +23,7 @@ export class FinderComponent {
         gifService.getTrending().subscribe((res) => {
           this.fetchedGifs = res.filter((g) => {
             return !service.gifs.some((gif) => {
-              return g.id == gif.id || g.name == gif.name;
+              return g.id == gif.id || g.url == gif.url;
             });
           });
         });
@@ -31,7 +31,7 @@ export class FinderComponent {
         gifService.searchByTag(value).subscribe((res) => {
           this.fetchedGifs = res.filter((g) => {
             return !service.gifs.some((gif) => {
-              return g.id == gif.id || g.name == gif.name;
+              return g.id == gif.id || g.url == gif.url;
             });
           });
         });

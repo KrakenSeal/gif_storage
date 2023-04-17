@@ -39,8 +39,12 @@ export class DashboardComponent {
   public openFinder() {
     console.log('Open finder action');
     this.dialog.open(FinderComponent, {
-      height: '80%',
-      width: '80%',
+      // height: '80%',
+      // width: '80%',
+      minWidth: '500px',
+      minHeight: '500px',
+      maxWidth: '1000px',
+      maxHeight: '1000px',
     });
   }
 
@@ -48,17 +52,33 @@ export class DashboardComponent {
     console.log('Open editor action');
     const dialogRef = this.dialog.open(CardEditorComponent);
     dialogRef.afterClosed().subscribe((result) => {
-      this.service.addGif(result);
-      console.log(result);
+      if (result) {
+        switch (result.action) {
+          case 'save':
+            this.service.addGif(result.gif);
+            break;
+        }
+      }
     });
   }
 
   public editGif(gif: GifMeta) {
     const dialogRef = this.dialog.open(CardEditorComponent, { data: gif });
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) this.service.update(result);
-      // TODO: move it in another place
-      // else this.service.downloadGif(gif);
+      if (result) {
+        switch (result.action) {
+          case 'save':
+            this.service.update(result.gif);
+            break;
+          case 'download':
+            this.service.update(result.gif);
+            this.service.downloadGif(result.gif);
+            break;
+          case 'delete':
+            this.service.removeGif(result.gif);
+            break;
+        }
+      }
     });
   }
 

@@ -11,7 +11,7 @@ export class CardEditorComponent {
   public name = '';
   public url = '';
   public preview = '';
-  constructor(@Inject(MAT_DIALOG_DATA) private gif?: GifMeta) {
+  constructor(@Inject(MAT_DIALOG_DATA) public gif?: GifMeta) {
     if (gif) {
       this.name = gif.name ?? '';
       this.url = gif.url;
@@ -19,13 +19,16 @@ export class CardEditorComponent {
     }
   }
 
-  public get genGif(): GifMeta {
+  public genGif(action: string): any {
     return {
-      id: this.gif?.id,
-      name: this.name,
-      url: this.url,
-      previewUrl: this.preview ? this.preview : this.url,
-      addDate: this.gif?.addDate,
+      action: action,
+      gif: {
+        id: this.gif?.id,
+        name: this.name,
+        url: this.url,
+        previewUrl: this.preview ? this.preview : this.url,
+        addDate: this.gif?.addDate,
+      },
     };
   }
 }

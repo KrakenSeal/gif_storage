@@ -8,5 +8,7 @@ import { GifMeta } from 'src/app/models/gif-meta.model';
 })
 export class GifCardComponent {
   @Input() gif?: GifMeta;
+
+  public showHeader = false;
   constructor() {}
 }

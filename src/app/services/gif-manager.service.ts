@@ -28,7 +28,7 @@ export class GifManagerService {
   }
 
   public addGif(gif: GifMeta) {
-    if (this.gifs.some((g) => g.id == gif.id || g.name == gif.name)) {
+    if (this.gifs.some((g) => g.name == gif.name || g.url == gif.url)) {
       this.showNotification('Gif was already added. Ignore');
       return false;
     }
@@ -41,19 +41,19 @@ export class GifManagerService {
   }
 
   public removeGif(gif: GifMeta) {
-    const index = this.gifs.findIndex((g) => g.id == gif.id || g.name == gif.name);
+    const index = this.gifs.findIndex((g) => g.id == gif.id || g.url == gif.url);
     if (index == -1) {
       this.showNotification('Cannot found gif. Ignore');
       return false;
     }
-    this.gifs.slice(index, 1);
+    this.gifs.splice(index, 1);
     this.saveState();
     this.showNotification('Gif successfully deleted');
     return true;
   }
 
   public update(gif: GifMeta) {
-    const index = this.gifs.findIndex((g) => g.id == gif.id || g.name == gif.name);
+    const index = this.gifs.findIndex((g) => g.id == gif.id || g.url == gif.url);
     if (index == -1) {
       this.showNotification('Cannot found gif. Ignore');
       return false;

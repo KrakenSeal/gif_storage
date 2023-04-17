@@ -76,3 +76,17 @@ button {
   display: flex;
   flex-direction: row;
 }
+
+.empty-container{
+  padding-top:100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+  text-align: center;
+  }
+}
+
+
+
